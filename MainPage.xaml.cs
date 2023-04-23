@@ -14,6 +14,7 @@ public partial class MainPage : ContentPage
 
     public MainPage()
     {
+        Title = "Hoşgeldin, " + UserSession.Session_Username;
         InitializeComponent();
 
         _shiftChoiseSave = new ShiftChoiseSave(new PSDbContext());

@@ -10,7 +10,6 @@ namespace PerfectS
     public class ShiftCreate
     {
         private readonly ShiftPageInformations _shiftPageInformation;
-        private readonly List<Label> labelList = new List<Label>();
 
         public ShiftCreate(PSDbContext context)
         {
@@ -21,6 +20,9 @@ namespace PerfectS
         {
             using(var context = new PSDbContext())
             {
+
+                List<Label> labelList = new List<Label>();
+
                 int index = 0;
 
                 int[] dayShiftCount = await _shiftPageInformation.ShiftPageInfo();

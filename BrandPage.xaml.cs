@@ -34,19 +34,17 @@ public partial class BrandPage : ContentPage
 
     private async void ShiftCreateButtonClicked(object sender, EventArgs e)
     {
-        Button clickedButton = (Button)sender;
-        clickedButton.IsEnabled = false;
         Grid shiftLayoutGrid = await _shiftCreate.ShiftCreateCalc();
         if (ShiftLayout.Children == null)
         {
             ShiftLayout.Children.Add(shiftLayoutGrid);
-            clickedButton.IsEnabled = true;
+            await DisplayAlert("Baþarýlý", "Çalýþma programý oluþturuldu.", "Tamam");
         }
         else
         {
             ShiftLayout.Children.Clear();
             ShiftLayout.Children.Add(shiftLayoutGrid);
-            clickedButton.IsEnabled = true;
+            await DisplayAlert("Baþarýlý", "Çalýþma programý oluþturuldu.", "Tamam");
         }
     }
 
