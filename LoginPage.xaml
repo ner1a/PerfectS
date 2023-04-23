@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PerfectS.LoginPage"
+             Title="Giriş">
+
+    <Grid RowDefinitions=".10*, .90*"
+          Padding="10"
+          RowSpacing="15"
+          ColumnSpacing="15">
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center"
+            Grid.RowSpan="2"
+            HorizontalOptions="Center"
+            >
+            <Image
+                Source="perfects.png"
+                SemanticProperties.Description="PerfectS Logo"
+                HeightRequest="95"
+                HorizontalOptions="Center" 
+                Grid.Row="1"
+                />
+            <Label 
+                x:Name="logInAlert"
+                Text="Kullanıcı Adı ya da Şifre hatalı!"
+                TextColor="Red"
+                FontAttributes="Bold"
+                IsVisible="false"
+                />
+            <Entry
+                x:Name="usernameEntry"
+                Placeholder="Kullanıcı Adı"
+                WidthRequest="200"
+                Grid.Row="2"
+                Focused="UsernameEntryFocused"
+                Completed="UsernameEntry_Completed"
+                >
+            </Entry>
+            <Entry  
+                x:Name="passwordEntry"
+                Placeholder="Şifre"
+                WidthRequest="200"
+                IsPassword="True"
+                Grid.Row="2"
+                Focused="PasswordEntryFocused"
+                Completed="PasswordEntry_Completed"
+                >
+            </Entry>
+            <Button
+                x:Name="LogIn"
+                Text="Giriş Yap"
+                MaximumWidthRequest="100"
+                TextColor="Black"
+                BackgroundColor="LightGreen"
+                Grid.Row="2"
+                Clicked="LogInClicked"
+                />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
