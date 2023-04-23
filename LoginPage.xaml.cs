@@ -16,14 +16,14 @@ public partial class LoginPage : ContentPage
 
     }
 
-    private void LogInClicked(object sender, EventArgs e)
+    private async void LogInClicked(object sender, EventArgs e)
     {
-        var isauthenticated = _authService.AuthenticateUser(usernameEntry.Text, passwordEntry.Text);
+        var isauthenticated = await _authService.AuthenticateUserAsync(usernameEntry.Text, passwordEntry.Text);
 
         if (isauthenticated > 0)
         {
-            if (isauthenticated == 2) Navigation.PushAsync(new BrandPage());
-            else Navigation.PushAsync(new MainPage());
+            if (isauthenticated == 2) await Navigation.PushAsync(new BrandPage());
+            else await Navigation.PushAsync(new MainPage());
         }
         else
         {
@@ -47,14 +47,14 @@ public partial class LoginPage : ContentPage
         passwordEntry.Focus();
     }
 
-    private void PasswordEntry_Completed(object sender, EventArgs e)
+    private async void PasswordEntry_Completed(object sender, EventArgs e)
     {
-        var isauthenticated = _authService.AuthenticateUser(usernameEntry.Text, passwordEntry.Text);
+        var isauthenticated = await _authService.AuthenticateUserAsync(usernameEntry.Text, passwordEntry.Text);
 
         if (isauthenticated > 0)
         {
-            if (isauthenticated == 2) Navigation.PushAsync(new BrandPage());
-            else Navigation.PushAsync(new MainPage());
+            if (isauthenticated == 2) await Navigation.PushAsync(new BrandPage());
+            else await Navigation.PushAsync(new MainPage());
         }
         else
         {

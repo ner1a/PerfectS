@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls.Shapes;
-using PerfectS.DatabaseClass;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 
@@ -15,6 +14,7 @@ public partial class BrandPage : ContentPage
 
     public BrandPage()
     {
+        Title = "Hoþgeldin, " + UserSession.Session_Brandname;
         _workdaysSave = new WorkdaysSave(new PSDbContext());
         _shiftCreate = new ShiftCreate(new PSDbContext());
         _employeeUpdate = new EmployeeUpdate(new PSDbContext());
@@ -22,25 +22,35 @@ public partial class BrandPage : ContentPage
         InitializeComponent();
     }
 
-    private void Update_Button_Clicked(object sender, EventArgs e)
+    private async void Update_Button_Clicked(object sender, EventArgs e)
     {
         employeeLayout.Children.Clear();
-        List<Label> employeeInfos = _employeeUpdate.UpdateEmployeeInfos();
+        List<Label> employeeInfos = await _employeeUpdate.UpdateEmployeeInfos();
         for (int i = 0; i < employeeInfos.Count; i++)
         {
             employeeLayout.Children.Add(employeeInfos[i]);
         }
     }
 
-    private void ShiftCreateButtonClicked(object sender, EventArgs e)
+    private async void ShiftCreateButtonClicked(object sender, EventArgs e)
     {
-        foreach (var label in _shiftCreate.ShiftCreateCalc())
+        Button clickedButton = (Button)sender;
+        clickedButton.IsEnabled = false;
+        Grid shiftLayoutGrid = await _shiftCreate.ShiftCreateCalc();
+        if (ShiftLayout.Children == null)
         {
-            weeksShiftPlan.Children.Add(label);
+            ShiftLayout.Children.Add(shiftLayoutGrid);
+            clickedButton.IsEnabled = true;
+        }
+        else
+        {
+            ShiftLayout.Children.Clear();
+            ShiftLayout.Children.Add(shiftLayoutGrid);
+            clickedButton.IsEnabled = true;
         }
     }
 
-    private void WorkingDaysSaveButtonClicked(object sender, EventArgs e)
+    private async void WorkingDaysSaveButtonClicked(object sender, EventArgs e)
     {
         int[] shiftCount = new int[7];
         int[] mondayShiftWorker = new int[3];
@@ -99,11 +109,11 @@ public partial class BrandPage : ContentPage
             sundayShiftWorker[1] = Int32.Parse(sunday_2_employeeCount.Text);
             sundayShiftWorker[2] = Int32.Parse(sunday_3_employeeCount.Text);
         }
-        bool isUpdated = _workdaysSave.BrandInfoUpdate(shiftCount, mondayShiftWorker, tuesdayShiftWorker, wednesdayShiftWorker,
+        bool isUpdated = await _workdaysSave.BrandInfoUpdate(shiftCount, mondayShiftWorker, tuesdayShiftWorker, wednesdayShiftWorker,
             thursdayShiftWorker, fridayShiftWorker, saturdayShiftWorker, sundayShiftWorker);
         
-        if (isUpdated) DisplayAlert("Baþarýlý","Tercihleriniz baþarýyla kaydedildi.","Tamam");
-        else DisplayAlert("Baþarýsýz!", "Bir hata oluþtu!", "Tamam");
+        if (isUpdated) await DisplayAlert("Baþarýlý","Tercihleriniz baþarýyla kaydedildi.","Tamam");
+        else await DisplayAlert("Baþarýsýz!", "Bir hata oluþtu!", "Tamam");
     }
 
     private void mondayWorkSwich_Toggled(object sender, ToggledEventArgs e)
@@ -456,276 +466,23 @@ public partial class BrandPage : ContentPage
         }
     }
 
-    private void monday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
+    private void EmployeeCount_Unfocused(object sender, FocusEventArgs e)
     {
+        Entry focusedEntry = (Entry)sender;
         try
         {
-            Int32.Parse(monday_1_employeeCount.Text);
+            Int32.Parse(focusedEntry.Text);
         }
         catch (Exception)
         {
             DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            monday_1_employeeCount.Text = "0";
+            focusedEntry.Text = "0";
         }
     }
 
-    private void monday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
+    private void Entry_Focused(object sender, FocusEventArgs e)
     {
-        try
-        {
-            Int32.Parse(monday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            monday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void monday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(monday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            monday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void tuesday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(tuesday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            tuesday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void tuesday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(tuesday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            tuesday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void tuesday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(tuesday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            tuesday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void wednesday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(wednesday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            wednesday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void wednesday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(wednesday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            wednesday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void wednesday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(wednesday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            wednesday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void thursday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(thursday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            thursday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void thursday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(thursday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            thursday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void thursday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(thursday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            thursday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void friday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(friday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            friday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void friday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(friday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            friday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void friday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(friday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            friday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void saturday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(saturday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            saturday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void saturday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(saturday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            saturday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void saturday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(saturday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            saturday_3_employeeCount.Text = "0";
-        }
-    }
-
-    private void sunday_1_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(sunday_1_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            sunday_1_employeeCount.Text = "0";
-        }
-    }
-
-    private void sunday_2_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(sunday_2_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            sunday_2_employeeCount.Text = "0";
-        }
-    }
-
-    private void sunday_3_employeeCount_Unfocused(object sender, FocusEventArgs e)
-    {
-        try
-        {
-            Int32.Parse(sunday_3_employeeCount.Text);
-        }
-        catch (Exception)
-        {
-            DisplayAlert("Hatalý giriþ", "Lütfen sadece sayý giriniz!", "Tamam");
-            sunday_3_employeeCount.Text = "0";
-        }
+        Entry focusedEntry = (Entry)sender;
+        focusedEntry.Text = "";
     }
 }

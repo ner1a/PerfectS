@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PerfectS.BrandPage"
-             Title="İşletme Sayfası">
+             x:Class="PerfectS.BrandPage">
     <ScrollView Orientation="Vertical">
         <ScrollView Orientation="Horizontal">
             <StackLayout>
@@ -119,33 +118,33 @@
                             </Picker.Items>
                         </Picker>
 
-                        <Entry Text="0" x:Name="monday_1_employeeCount" Unfocused="monday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="monday_2_employeeCount" Unfocused="monday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="monday_3_employeeCount" Unfocused="monday_3_employeeCount_Unfocused" VerticalOptions="Center"  Keyboard="Numeric" Grid.Column="5" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="monday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="monday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="monday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center"  Keyboard="Numeric" Grid.Column="5" Grid.Row="2" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="tuesday_1_employeeCount" Unfocused="tuesday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="tuesday_2_employeeCount" Unfocused="tuesday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="tuesday_3_employeeCount" Unfocused="tuesday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="tuesday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="tuesday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="tuesday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="3" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="wednesday_1_employeeCount" Unfocused="wednesday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="wednesday_2_employeeCount" Unfocused="wednesday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="wednesday_3_employeeCount" Unfocused="wednesday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="wednesday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="wednesday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="wednesday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="4" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="thursday_1_employeeCount" Unfocused="thursday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="thursday_2_employeeCount" Unfocused="thursday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="thursday_3_employeeCount" Unfocused="thursday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="thursday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="thursday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="thursday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="5" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="friday_1_employeeCount" Unfocused="friday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="friday_2_employeeCount" Unfocused="friday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="friday_3_employeeCount" Unfocused="friday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="friday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="friday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="friday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="6" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="saturday_1_employeeCount" Unfocused="saturday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="saturday_2_employeeCount" Unfocused="saturday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="saturday_3_employeeCount" Unfocused="saturday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="saturday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="saturday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="saturday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="7" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
-                        <Entry Text="0" x:Name="sunday_1_employeeCount" Unfocused="sunday_1_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="sunday_2_employeeCount" Unfocused="sunday_2_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
-                        <Entry Text="0" x:Name="sunday_3_employeeCount" Unfocused="sunday_3_employeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="sunday_1_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="3" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="sunday_2_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="4" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
+                        <Entry Text="0" x:Name="sunday_3_employeeCount" Focused="Entry_Focused" Unfocused="EmployeeCount_Unfocused" VerticalOptions="Center" Keyboard="Numeric" Grid.Column="5" Grid.Row="8" MaximumWidthRequest="20" Margin="10" IsVisible="false"/>
 
                         <Button Text="Kaydet" Margin="0,10,0,0" Grid.Row="9" Grid.ColumnSpan="6" Clicked="WorkingDaysSaveButtonClicked" WidthRequest="150" BackgroundColor="LightGreen"/>
                     </Grid>
@@ -157,7 +156,7 @@
                              HorizontalOptions="Center">
                     <StackLayout VerticalOptions="Center"
                                  HorizontalOptions="Center">
-                        <Button Text="Son Güncellemeler"
+                        <Button Text="Güncelle"
                                 Clicked="Update_Button_Clicked"
                                 BackgroundColor="LightGreen"
                                 WidthRequest="170"/>
@@ -166,42 +165,13 @@
                                  Orientation="Vertical"
                                  VerticalOptions="Center"
                                  HorizontalOptions="Center">
-                        
                     </StackLayout>
                 </StackLayout>
-                <StackLayout>
-                    <Button Text="Shift Yarat" Margin="5" MaximumWidthRequest="150" Clicked="ShiftCreateButtonClicked" BackgroundColor="LightGreen" WidthRequest="150"/>
-                    <Grid x:Name="weeksShiftPlan"
-                      HorizontalOptions="Center"
-                      Margin="0,0,0,30">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60" />
-                            <RowDefinition Height="60" />
-                            <RowDefinition Height="60" />
-                            <RowDefinition Height="60" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                            <ColumnDefinition Width="80" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Günler" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="0" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Shift 1" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="0" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Shift 2" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="0" Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Shift 3" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="0" Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Pazartesi" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Salı" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="2" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Çarşamba" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="3" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Perşembe" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="4" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Cuma" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="5" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Cumartesi" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="6" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                        <Label Text="Pazar" FontAttributes="Bold" TextColor="LightGreen" Grid.Column="7" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"/>
-                    </Grid>
+                <StackLayout Orientation="Vertical">
+                    <Button Text="Shift Oluştur" Margin="5" MaximumWidthRequest="150" Clicked="ShiftCreateButtonClicked" BackgroundColor="LightGreen" WidthRequest="150"/>
+                    <StackLayout x:Name="ShiftLayout">
+                        
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

@@ -20,16 +20,17 @@ public partial class MainPage : ContentPage
         _shiftPageInformation = new ShiftPageInformations(new PSDbContext());
     }
 
-    public void ShiftSaveClicked(object sender, EventArgs e)
+    public async void ShiftSaveClicked(object sender, EventArgs e)
     {
-        if (_shiftChoiseSave.ShiftChoiseUpload(pickerList))
+        bool result = await _shiftChoiseSave.ShiftChoiseUpload(pickerList);
+        if (result)
         {
-            DisplayAlert("Başarılı", "Tercihleriniz kaydedildi.", "Tamam");
+            await DisplayAlert("Başarılı", "Tercihleriniz kaydedildi.", "Tamam");
         }
-        else DisplayAlert("Başarısız", "Bir sorun oluştu.", "Tamam");
+        else await DisplayAlert("Başarısız", "Bir sorun oluştu.", "Tamam");
     }
 
-    private void CreateShiftChoiseLayout()
+    private async void CreateShiftChoiseLayout()
     {
         Grid grid = new Grid
         {
@@ -86,7 +87,7 @@ public partial class MainPage : ContentPage
             FontAttributes = FontAttributes.Bold,
         }, 3, 0);
 
-        int[] workingDays = _shiftPageInformation.ShiftPageInfo();
+        int[] workingDays = await _shiftPageInformation.ShiftPageInfo();
 
 
         for (int i = 0; i < 7; i++)
@@ -124,18 +125,6 @@ public partial class MainPage : ContentPage
                 }
             }
         }
-        
-        Button shiftSaveButton = new Button();
-        shiftSaveButton.Text = "Kaydet";
-        shiftSaveButton.Clicked += ShiftSaveClicked;
-        shiftSaveButton.Margin = new Thickness(0,10,0,20);
-        shiftSaveButton.BackgroundColor = Colors.LightGreen;
-        shiftSaveButton.WidthRequest = 150;
-        Grid.SetRow(shiftSaveButton, 8);
-        Grid.SetColumn(shiftSaveButton, 0);
-        Grid.SetColumnSpan(shiftSaveButton, 4);
-
-        grid.Add(shiftSaveButton);
 
         MainLayout.Add(grid);
     }
@@ -145,11 +134,13 @@ public partial class MainPage : ContentPage
         if (MainLayout.Children == null)
         {
             CreateShiftChoiseLayout();
+            shiftSaveButton.IsVisible = true;
         }
         else
         {
             MainLayout.Children.Clear();
             CreateShiftChoiseLayout();
+            shiftSaveButton.IsVisible = true;
         }
     }
 }

@@ -1,43 +1,45 @@
-﻿using PerfectS;
+﻿using Microsoft.EntityFrameworkCore;
+using PerfectS;
 
 public class ShiftChoiseSave
 {
-    private readonly PSDbContext _context;
-
     public ShiftChoiseSave(PSDbContext context)
     {
-        _context = context;
+        
     }
 
-    public bool ShiftChoiseUpload(List<Picker> pickerList)
+    public async Task<bool> ShiftChoiseUpload(List<Picker> pickerList)
     {
-        var shiftchoise = _context.ShiftChoises.Where(s => s.Brand_Id == UserSession.Session_Brand_Id && s.User_Id == UserSession.Session_User_Id).FirstOrDefault();
-        var brand = _context.Brands.FirstOrDefault(b => b.Brand_Id == UserSession.Session_Brand_Id);
-
-        string[] weekDays = new string[] { "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };
-        string[] weekDaysEN = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-
-        if (shiftchoise != null) 
+        using (var context = new PSDbContext())
         {
-            foreach (Picker picker in pickerList)
+            var shiftchoise = await context.ShiftChoises.Where(s => s.Brand_Id == UserSession.Session_Brand_Id && s.User_Id == UserSession.Session_User_Id).FirstOrDefaultAsync();
+            var brand = await context.Brands.FirstOrDefaultAsync(b => b.Brand_Id == UserSession.Session_Brand_Id);
+
+            string[] weekDays = new string[] { "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };
+            string[] weekDaysEN = new string[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+            if (shiftchoise != null)
             {
-                for (int i = 0; i < 7; i++)
+                foreach (Picker picker in pickerList)
                 {
-                    for (int j = 0; j < 3; j++)
+                    for (int i = 0; i < 7; i++)
                     {
-                        if (picker.AutomationId == weekDays[i] + (j + 1).ToString())
+                        for (int j = 0; j < 3; j++)
                         {
-                            string columnname = weekDaysEN[i] + "_" + (j + 1).ToString();
-                            var column = typeof(ShiftChoise).GetProperty(columnname);
-                            column.SetValue(shiftchoise, (picker.SelectedIndex + 1));
+                            if (picker.AutomationId == weekDays[i] + (j + 1).ToString())
+                            {
+                                string columnname = weekDaysEN[i] + "_" + (j + 1).ToString();
+                                var column = typeof(ShiftChoise).GetProperty(columnname);
+                                column.SetValue(shiftchoise, (picker.SelectedIndex + 1));
+                            }
                         }
                     }
+                    shiftchoise.Last_Update = DateTime.Now.ToString("dd/MM/yy HH:mm");
                 }
-                shiftchoise.Last_Update = DateTime.Now;
+                context.SaveChanges();
+                return true;
             }
-            _context.SaveChanges();
-            return true;
-        }
-        else return false;
+            else return false;
+        }        
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+#nullable enable
 namespace PerfectS
 {
     [PrimaryKey(nameof(Brand_Id), nameof(User_Id))]
@@ -7,7 +7,7 @@ namespace PerfectS
     {
         public int Brand_Id { get; set; }
         public int User_Id { get; set; }
-        public DateTime? Last_Update { get; set; }
+        public string? Last_Update { get; set; }
         //-----------------------------------------
         public int? Monday_1 { get; set; }
         public int? Monday_2 { get; set; }
