@@ -5,8 +5,6 @@ public partial class BrandShiftSettings : ContentPage
     private readonly WorkdaysSave _workdaysSave;
     public BrandShiftSettings()
 	{
-        Title = UserSession.Session_Brandname + " > Shift Ayarlarý";
-
         _workdaysSave = new WorkdaysSave(new PSDbContext());
 
         InitializeComponent();

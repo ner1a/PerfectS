@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:PerfectS"
+             x:Class="PerfectS.BrandTabbedPage">
+    <local:BrandPage Title="" IconImageSource="home.png" />
+    <local:BrandEmployees Title="" IconImageSource="team.png" />
+    <local:BrandShiftSettings Title="" IconImageSource="shifticon.png" />
+    <local:Settings Title="" IconImageSource="settings.png" />
+</TabbedPage>

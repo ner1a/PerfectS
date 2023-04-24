@@ -1,40 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PerfectS.BrandPage">
+             x:Class="PerfectS.BrandPage"
+             Title="Anasayfa">
     <ScrollView Orientation="Vertical"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
-        <ScrollView Orientation="Horizontal">
-            <StackLayout>
-                <Button Text="Shift Ayarları" WidthRequest="150" Clicked="Shift_Settings_Clicked"/>
-                <StackLayout Orientation="Vertical"
-                             Spacing="30"
-                             Padding="20"
-                             VerticalOptions="Center"
-                             HorizontalOptions="Center">
-                    <StackLayout VerticalOptions="Center"
-                                 HorizontalOptions="Center">
-                        <Button Text="Güncelle"
-                                Clicked="Update_Button_Clicked"
-                                BackgroundColor="LightGreen"
-                                WidthRequest="150"/>
-                    </StackLayout>
-                    <StackLayout x:Name="employeeLayout"
-                                 Orientation="Vertical"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center"
-                                 Spacing="10">
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Orientation="Vertical"
+        <ScrollView Orientation="Horizontal"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">            
+            <StackLayout Orientation="Vertical"
+                            Margin="0,10,0,40">
+                <StackLayout VerticalOptions="Start"
+                             HorizontalOptions="Center"
                              Margin="0,10,0,40">
-                    <Button Text="Shift Oluştur" Margin="5" MaximumWidthRequest="150" Clicked="ShiftCreateButtonClicked" BackgroundColor="LightGreen" WidthRequest="150"/>
-                    <StackLayout x:Name="ShiftLayout">
-                        
-                    </StackLayout>
+                    <Label x:Name="BrandNameLabel" FontAttributes="Bold" FontSize="35"/>
+                    <Label x:Name="BrandEmployeeLabel" Text="Çalışan sayısı: "/>
                 </StackLayout>
-            </StackLayout>
+                <Button Text="Shift Oluştur" Margin="5" Clicked="ShiftCreateButtonClicked" BackgroundColor="LightGreen"/>
+                <StackLayout x:Name="ShiftLayout">
+                </StackLayout>
+            </StackLayout>            
         </ScrollView>
     </ScrollView>
 </ContentPage>

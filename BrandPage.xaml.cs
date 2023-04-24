@@ -13,21 +13,11 @@ public partial class BrandPage : ContentPage
 
     public BrandPage()
     {
-        Title = "Hoþgeldin, " + UserSession.Session_Brandname;
         _shiftCreate = new ShiftCreate(new PSDbContext());
         _employeeUpdate = new EmployeeUpdate(new PSDbContext());
-      
         InitializeComponent();
-    }
-
-    private async void Update_Button_Clicked(object sender, EventArgs e)
-    {
-        employeeLayout.Children.Clear();
-        List<Label> employeeInfos = await _employeeUpdate.UpdateEmployeeInfos();
-        for (int i = 0; i < employeeInfos.Count; i++)
-        {
-            employeeLayout.Children.Add(employeeInfos[i]);
-        }
+        BrandNameLabel.Text = UserSession.Session_Brandname;
+        BrandEmployeeLabel.Text += (UserSession.Session_EmployeeCount.ToString());
     }
 
     private async void ShiftCreateButtonClicked(object sender, EventArgs e)
