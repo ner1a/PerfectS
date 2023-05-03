@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PerfectS.BrandEmployees"
              Title="Çalışanlar">
-    <VerticalStackLayout>
-        <Label 
-            Text="Çalışanlar Sayfası"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView Orientation="Both">
+        <StackLayout HorizontalOptions="Center"
+                     VerticalOptions="Center">
+            <Button Text="Yenile" Clicked="EmployeeRefreshButtonClicked" Margin="30,0,0,30"/>
+            <StackLayout x:Name="EmployeeLayout"
+                     Orientation="Vertical"
+                     HorizontalOptions="Center">
+
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

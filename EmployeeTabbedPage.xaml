@@ -2,10 +2,8 @@
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:PerfectS"
-             x:Class="PerfectS.BrandTabbedPage"
-            Title="">
-    <local:BrandPage Title="Anasayfa" IconImageSource="home.png" />
-    <local:BrandEmployees Title="Ekip" IconImageSource="team.png" />
-    <local:BrandShiftSettings Title="Shift" IconImageSource="shifticon.png" />
+             x:Class="PerfectS.EmployeeTabbedPage"
+             Title="">
+    <local:MainPage Title="Anasayfa" IconImageSource="home.png" />
     <local:Settings Title="Hesap" IconImageSource="settings.png" />
 </TabbedPage>

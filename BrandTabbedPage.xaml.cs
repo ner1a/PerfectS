@@ -4,7 +4,7 @@ public partial class BrandTabbedPage : TabbedPage
 {
 	public BrandTabbedPage()
 	{
-		Title = UserSession.Session_Brandname;
 		InitializeComponent();
-	}
+		Title = UserSession.Session_Brandname;
+    }
 }

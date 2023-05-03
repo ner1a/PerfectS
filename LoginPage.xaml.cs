@@ -23,7 +23,7 @@ public partial class LoginPage : ContentPage
         if (isauthenticated > 0)
         {
             if (isauthenticated == 2) await Navigation.PushAsync(new BrandTabbedPage());
-            else await Navigation.PushAsync(new MainPage());
+            else await Navigation.PushAsync(new EmployeeTabbedPage());
         }
         else
         {
@@ -54,7 +54,7 @@ public partial class LoginPage : ContentPage
         if (isauthenticated > 0)
         {
             if (isauthenticated == 2) await Navigation.PushAsync(new BrandTabbedPage());
-            else await Navigation.PushAsync(new MainPage());
+            else await Navigation.PushAsync(new EmployeeTabbedPage());
         }
         else
         {

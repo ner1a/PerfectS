@@ -5,10 +5,9 @@ public partial class BrandShiftSettings : ContentPage
     private readonly WorkdaysSave _workdaysSave;
     public BrandShiftSettings()
 	{
-        _workdaysSave = new WorkdaysSave(new PSDbContext());
-
         InitializeComponent();
-	}
+        _workdaysSave = new WorkdaysSave(new PSDbContext());
+    }
 
     private async void WorkingDaysSaveButtonClicked(object sender, EventArgs e)
     {
